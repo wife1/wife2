@@ -1,0 +1,7 @@
+{
+  "name": "OurDream.ai - Perfect AI Companion",
+  "description": "Create and interact with your ideal AI partner. Design their appearance, personality, and build a unique relationship through advanced AI conversation and image generation.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
