@@ -6,6 +6,7 @@ import { Loader2, Wand2, ChevronRight, ChevronLeft, User, Palette, Brain, Sparkl
 interface CharacterCreatorProps {
   onComplete: (character: Character) => void;
   onCancel: () => void;
+  initialShowGallery?: boolean;
 }
 
 const STEPS = ['Identity', 'Appearance', 'Personality'];
@@ -15,10 +16,10 @@ const EYE_COLORS = ['Blue', 'Brown', 'Green', 'Hazel', 'Grey', 'Amber', 'Red', '
 const CLOTHING_STYLES = ['Casual chic', 'Casual', 'Formal', 'Streetwear', 'Cyberpunk', 'Fantasy', 'Uniform', 'Bikini', 'Traditional', 'Goth', 'Sporty', 'Business', 'Minimalist'];
 const PHYSIQUES = ['Slim', 'Athletic', 'Curvy', 'Muscular', 'Average', 'Petite', 'Tall', 'Plus Size'];
 
-const CharacterCreator: React.FC<CharacterCreatorProps> = ({ onComplete, onCancel }) => {
+const CharacterCreator: React.FC<CharacterCreatorProps> = ({ onComplete, onCancel, initialShowGallery = false }) => {
   const [step, setStep] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [showGallery, setShowGallery] = useState(false);
+  const [showGallery, setShowGallery] = useState(initialShowGallery);
   const [savedCharacters, setSavedCharacters] = useState<Character[]>([]);
   const [avatarMethod, setAvatarMethod] = useState<'generate' | 'upload' | 'default'>('generate');
   const fileInputRef = useRef<HTMLInputElement>(null);

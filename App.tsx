@@ -7,8 +7,10 @@ import { Character, AppView } from './types';
 function App() {
   const [currentView, setCurrentView] = useState<AppView>(AppView.LANDING);
   const [character, setCharacter] = useState<Character | null>(null);
+  const [showGalleryOnCreator, setShowGalleryOnCreator] = useState(false);
 
   const handleStart = () => {
+    setShowGalleryOnCreator(false);
     setCurrentView(AppView.CREATOR);
   };
 
@@ -21,10 +23,10 @@ function App() {
     setCurrentView(AppView.LANDING);
   };
 
-  const handleBackToLanding = () => {
-    // Optional: Confirm before leaving chat? For now just go back.
-    setCurrentView(AppView.LANDING);
+  const handleBackFromChat = () => {
     setCharacter(null);
+    setCurrentView(AppView.CREATOR);
+    setShowGalleryOnCreator(true);
   };
 
   return (
@@ -37,13 +39,14 @@ function App() {
         <CharacterCreator 
           onComplete={handleCharacterCreated}
           onCancel={handleCancelCreation}
+          initialShowGallery={showGalleryOnCreator}
         />
       )}
 
       {currentView === AppView.CHAT && character && (
         <ChatInterface 
           character={character}
-          onBack={handleBackToLanding}
+          onBack={handleBackFromChat}
         />
       )}
     </div>

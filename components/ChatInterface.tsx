@@ -169,7 +169,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ character, onBack }) => {
         {/* Header */}
         <div className="h-20 bg-slate-900/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-6 absolute top-0 w-full z-20">
             <div className="flex items-center gap-4">
-                <button onClick={onBack} className="md:hidden text-slate-400 hover:text-white">
+                <button onClick={onBack} className="text-slate-400 hover:text-white hover:scale-110 transition-transform">
                     <ChevronLeft className="w-6 h-6" />
                 </button>
                 <div className="relative">
